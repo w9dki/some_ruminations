@@ -28,13 +28,13 @@ $ ./randn_complex_7
  u and v = 0.28028943  -0.25109037*I
  u and v = 1.12512160  -0.56908906*I
  u and v = -1.18069878  0.61920043*I
-
-gsl_zigg_dsfmt                     = 0.43400046 (s) 
+ 
+gsl_zigg_dsfmt                     = 0.43400046 (s)
 Box-Muller                         = 1.37106105 (s) 
-SIMD Box-Muller with fast_sin-cos  = 0.63448656 (s) 
-Box-Muller manual SIMD             = 0.65211192 (s) 
-SIMD Marsaglia polar               = 0.62771889 (s) 
-Time for Leva Gaussian ratio       = 0.40401675 (s) 
+SIMD Box-Muller with fast_sin-cos  = 0.63448656 (s)
+Box-Muller manual SIMD             = 0.65211192 (s)
+SIMD Marsaglia polar               = 0.62771889 (s)
+Time for Leva Gaussian ratio       = 0.40401675 (s)
 
 **************
 
