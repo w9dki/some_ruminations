@@ -2,7 +2,7 @@
 some C-11, Fortran , Python and assembly code hacks
 
 These first are very fast random number generators for complex, double random number generators equivalent to
-randn() + i*randn()    in Matlab or Python3 with numpy / matlib.  They are meant are meant to be called 10^6 to 10^12 times.
+randn() + i*randn()    in Matlab or Python3 with numpy / Pylab.  They are meant are meant to be called 10^6 to 10^12 times.
 
 These varients include the Ziggurat, FAST Box-Muller, SIMD Marsaglia Polar, and a Leva Gaussian ratio algorithm.  All variatioins use dsfmt() and SIMD vectored instructions.  They are compiled with:   (example for randn_complex_8.c)
  
