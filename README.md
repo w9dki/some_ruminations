@@ -1,5 +1,5 @@
 # some_ruminations
-View in RAW: some C-11, Fortran , Python and assembly code hacks
+View in RAW mode:   Some C-11, Fortran , Python and assembly code hacks
 
 These are a comparison of some very fast Gaussian random number generators for complex, double2-D arrays equivalent to the Matlab statement:
   n = 4096;
