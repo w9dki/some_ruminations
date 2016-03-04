@@ -21,6 +21,8 @@ gcc produces  surprisingly fast machine code in the relatively simple coded 2_D,
 
 The complex gsl ziggurat version with dsfmt() is usually slightly faster, but not dramatically so compared to the simple FAST Box-Muller and Marsaglia Polar algorithms.   gcc  5 gives these timings for the 4090 x 4096 complex double arrays of Gaussian random numbers using 1-D pointer arithmetic on a 2-D complex double array  (normally, the fastest version for a 4096 x 4096 double complex array in gcc, C11
 
+ for an i7 2600K @4GHz/ single thread
+ 
 $ ./randn_complex_7
  u and v = -0.27161188  0.12163298*I
  u and v = -1.50471852  -0.64422578*I
@@ -38,7 +40,7 @@ Time for Leva Gaussian ratio       = 0.40401675 (s)
 
 **************
 
-Dividing by 4096 x 4096 x 2 gives 12.8 ns per Gaussian random number for the gsl, Ziggurat code using dsfmt() and 18 ns per Gaussian random number with the SIMD Marsaglia polar varient.
+Dividing by 4096 x 4096 x 2 gives 12.8 ns per Gaussian random number for the gsl, Ziggurat code using dsfmt() and 18 ns per Gaussian random number with the SIMD Marsaglia polar variant.
 
 
 DLW/W9DKI
