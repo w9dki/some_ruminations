@@ -1,8 +1,8 @@
 /* randn_complex_7.c
 
   DLW: 27 Feb 2013, 31 Jan 2016
-  Using pointer arithmetic, in 1-D for 2D complex double and reals for complex (~ pointers used as a FORTAN equivalence without employing a C union)
-  using double *ptr;  for the pointer
+  Using pointer arithmetic, in 1-D for 2D complex double and reals for complex (~ 1-D pointers used as a FORTAN equivalence 
+  to 2-D without employing a C union.  This is usually the fastest algorithm
 
   Compile for gcc-5:
 
