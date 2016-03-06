@@ -1,6 +1,6 @@
 /* randn_complex_6
   DLW: 27 Feb 2013, 31 Jan 2016
-  C-11 complex version
+  C-11 complex version of a 2-D complex double array: r[i][j] = u + I*v;
 
   compile for gcc-5:
 
