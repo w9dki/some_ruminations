@@ -1,7 +1,9 @@
 /* randn_complex_8.c
   DLW: 23 Feb 2016
+  Functions return only a  u, v pair.  The for loop for the 2-D,  complex, double array is in main().
+  This is nearly as fast as having the looping inside the functions  (versions 5 through 7)
   
-compile for gcc-5:
+  compile for gcc-5:
 
 gcc -std=gnu11 -Wall -Ofast -msse2 -frename-registers -malign-double -fno-strict-aliasing -DHAVE_SSE2=1 -DDSFMT_MEXP=19937 -o randn_complex_8 dSFMT.c randn_complex_8.c -lm -lrt -lgsl -lgslcblas
 
