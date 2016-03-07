@@ -17,11 +17,11 @@ These are meant to be absolutely as fast as possible.  randn_complex_7.c uses 1_
 
 If you can find a way to make these faster or better.  Let me know.
 
-gcc produces  surprisingly fast machine code in the relatively simple coded 2_D, complex, double versions:  randn_complex_6.c and randn_complex_8.c, whereas randn_complex_5.c and randn_complex_7.c use pointer arithmetic.  In comparison, randn_complex_8.c simply returns a complex pair of pointers ber call and the 2-D complex, double, array allocation and usage occur in main() rather than in the functions themselves.   Pointers to the arrays (calls by location) are used rather than making copies of the huge arrays i.e. calls by value.
+gcc produces  surprisingly fast machine code in the relatively simple coded 2-D, complex, double versions:  randn_complex_6.c and randn_complex_8.c, whereas randn_complex_5.c and randn_complex_7.c use full, pointer arithmetic.  In comparison, randn_complex_8.c simply returns a complex pair of pointers per call and the 2-D complex, double, array allocation and usage occur in main() rather than in the functions themselves.   Pointers to the arrays (calls by location) are used in every case rather than making copies of the huge arrays i.e. calls by value.
 
-The complex gsl ziggurat version with dsfmt() is usually slightly faster, but not dramatically so compared to the simple FAST Box-Muller and Marsaglia Polar algorithms.   gcc  5 gives these timings for the 4090 x 4096 complex double arrays of Gaussian random numbers using 1-D pointer arithmetic on a 2-D complex double array  (normally, the fastest version for a 4096 x 4096 double complex array in gcc, C11
+The complex gsl ziggurat version with dsfmt() is usually slightly faster and is a benchmark test algorithm to beat.  It is not much faster than the simple FAST Box-Muller and Marsaglia Polar algorithms, on steroids.   gcc-5 gives the following timings for a 4090 x 4096 complex, double-array of Gaussian random numbers processed using 1-D real, pointer arithmetic on a 2-D complex double array (xxx_7.c).  This is usually, the fastest version (slightly) for gcc -std=gnu11 ...
 
- for an i7 2600K @4GHz/ single thread
+ for an i7 2600K @4GHz/ single thread (4096 x 4096 complex, double, calloc array)
  
 $ ./randn_complex_7
  u and v = -0.27161188  0.12163298*I
@@ -40,7 +40,7 @@ Time for Leva Gaussian ratio       = 0.40401675 (s)
 
 **************
 
-Dividing by 4096 x 4096 x 2 gives 12.8 ns per Gaussian random number for the gsl, Ziggurat code using dsfmt() and 18 ns per Gaussian random number with the SIMD Marsaglia polar variant.
+Dividing by 4096 x 4096 x 2 gives 12.8 ns per Gaussian random number for the gsl, Ziggurat code using dsfmt() and 18 ns per Gaussian random number with the SIMD Marsaglia polar variant which is quite competitive considering the simplicity.
 
 
 DLW/W9DKI
