@@ -5,7 +5,7 @@ These are a comparison of some very fast Gaussian random number generators for c
   n = 4096;
   E = randn(n, n) + i*randn(n, n) 
 
-or Python3 with numpy / Pylab.  They are meant are expected to be called 10^6 to 10^12 times.
+or Python3 with numpy / Pylab.  They are meant to be called 10^6 to 10^12 times.
 
 These varients include the Ziggurat, FAST Box-Muller, SIMD Marsaglia Polar, and a Leva Gaussian ratio Gaussian random number algorithms.  All variations use the uniform. Mersenne prime generator dsfmt() and utilize SIMD vectored instructions.
 
