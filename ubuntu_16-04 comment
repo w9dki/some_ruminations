@@ -27,9 +27,9 @@ that including the gcc linker command - static in the string:
 Note the factor of ~2 to 2.5 speed up for the Box-Muller and SIMD Marsaglia C codes. This is not a gcc-5 compiler
 issue since earlier gcc compilers: gcc-4.8 ...,  and gcc-4.9 do not change the timings (in Ubuntu 16.04)
     
-I think this has something to do with changes in the gcc linker and the Turbo mode of the i7 2600k processor in Xenial Xerus.  Interestingly using
-Note that a laptop with a Core-Duo i5, T9900 mobile processor running at 3.06 GHz under 16.04 with or without the 
-the -static linker option gives: 
+I think this has something to do with changes in the gcc linker and the Turbo mode of the i7 2600k processor in 
+Xenial Xerus.  Even more interesting a laptop with a Core-Duo i5, T9900 mobile processor running at 3.06 GHz 
+under 16.04 with or without the the -static linker option gives: 
    
    gsl_zigg_dsfmt                      = 0.6027s)
    Box-Muller                          = 2.2653(s)
@@ -38,15 +38,15 @@ the -static linker option gives:
    SIMD Marsaglia polar                = 1.0796(s)
    Time for Leva Gaussian ratio        = 0.6908(s)
    
-These laptop speeds for 16.04 (Xenial Xerus) are almost a factor of two faster than for the 4.6GHz, 
-water cooled i7 2600k !!.... That is until the -static linker option is included.  Then the single thread, i7 
-2600k code jumps to nearly twice as fast is the laptop...for only the Box-Muller and Marsaglia algorithms 
+These mobile dual core speeds for 16.04 (Xenial Xerus) are almost a factor of two faster than for the4 core (8 threat)
+4.6GHz, water cooled i7 2600k !!.... That is until the i cinclude the -static linker option.  Then the single thread, 
+i7 2600k runs jump to nearly twice as fast is the laptop...but for only the Box-Muller and Marsaglia algorithms 
 [~1.0048(s) vs 0.5532(s)]
    
-I tried a fresh, clean install of Ubuntu 16.04 but saw no changes in behavior. I suspectthat Ubuntu 16.04 
-does not activate the 2600k turbo mode the same as in 15.04 and 15.10 without using the 
--static option.  The -static linker option reates a complete, stand alone load module, which is analagous to a 
-windows executable:  i.e. program_name.exe .
+I tried a fresh, clean install of Ubuntu 16.04 but saw no changes in behavior. I suspect that Ubuntu 16.04 
+does not activate the 2600k turbo mode the same as in 15.04 and 15.10. But the using the gcc -static option  
+circumvents the problem.  The -static linker option in Linux reates a complete, stand alone load module, which is 
+analagous to a windows .exe executable.
    
    73
    W9DKI
