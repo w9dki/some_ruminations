@@ -2,7 +2,7 @@ Using gcc-5 in Ubuntu 16.04 (Xenial Xerus) introduces a new twist for an Intel i
 Using a standard gcc-5 compile:
    gcc-5 -stc=gnu11 -Wall -Ofast -msse2...
 
-This produces a strange result:
+produces a strange result:
 
    gsl_zigg_dsfmt                      = 0.4544(s)
    Box-Muller                          = 1.8819(s)
@@ -11,7 +11,7 @@ This produces a strange result:
    SIMD Marsaglia polar                = 1.3129(s)
    Time for Leva Gaussian ratio        = 0.3940(s)
 
-The executionspeeds for a 4096 x 4096 double complex array using Box-Muller and Marsaglia polar algorithms
+The execution speeds for a 4096 x 4096 double complex array using Box-Muller and Marsaglia polar algorithms
 are between 2-3 times slower in 16.04 than for Ubuntu 15.10 or 15.04!  However,  by trial and error, I found 
 that including the gcc linker command - static in the string:
 
@@ -24,11 +24,11 @@ that including the gcc linker command - static in the string:
    SIMD Marsaglia polar                = 0.5440(s)
    Time for Leva Gaussian ratio        = 0.3837(s)
 
-Note the factor of ~2 to 2.5 speed up for the Box-Muller and SIMD Marsaglia C codes. This is not a gcc-5 compiler
-issue since earlier gcc compilers: gcc-4.8 ...,  and gcc-4.9 do not change the timings (in Ubuntu 16.04)
+Note the factor of ~2 to 2.5 speed up for the Box-Muller and SIMD Marsaglia C SIMD algorithms. This is not a gcc-5 compiler
+issue since earlier gcc compilers: gcc-4.8 ...,  and gcc-4.9 do not change their timings when including -static, but 16.04 does.
     
 I think this has something to do with changes in the gcc linker and the Turbo mode of the i7 2600k processor in 
-Xenial Xerus.  Even more interesting a laptop with a Core-Duo i5, T9900 mobile processor running at 3.06 GHz 
+Xenial Xerus.  Even more interesting, a laptop with a Core-Duo, T9900 mobile processor running at 3.06 GHz 
 under 16.04 with or without the the -static linker option gives: 
    
    gsl_zigg_dsfmt                      = 0.6027s)
@@ -38,15 +38,16 @@ under 16.04 with or without the the -static linker option gives:
    SIMD Marsaglia polar                = 1.0796(s)
    Time for Leva Gaussian ratio        = 0.6908(s)
    
-These mobile dual core speeds for 16.04 (Xenial Xerus) are almost a factor of two faster than for the4 core (8 threat)
-4.6GHz, water cooled i7 2600k !!.... That is until the i cinclude the -static linker option.  Then the single thread, 
-i7 2600k runs jump to nearly twice as fast is the laptop...but for only the Box-Muller and Marsaglia algorithms 
-[~1.0048(s) vs 0.5532(s)]
+These mobile core duo timings for the laptop under 16.04 (Xenial Xerus) are almost a factor of two faster than for the 4 
+core (8 threat)  4.6GHz, water cooled i7 2600k !!.... That is until the I include the -static linker option.  Then the single thread, 
+i7 2600k runs are nearly twice as fast is the laptop...but for only the Box-Muller and Marsaglia algorithms 
+[~1.0048(s) vs 0.5532(s)]  but the gsl routines and Leva Gaussian don't change... go figure.
    
 I tried a fresh, clean install of Ubuntu 16.04 but saw no changes in behavior. I suspect that Ubuntu 16.04 
 does not activate the 2600k turbo mode the same as in 15.04 and 15.10. But the using the gcc -static option  
-circumvents the problem.  The -static linker option in Linux reates a complete, stand alone load module, which is 
-analagous to a windows .exe executable.
+circumvents the problem and turbo mode is implemented correctly.  One caveat though:  Using watch sensors while the codes run, 
+there is litter difference in the CPU temperature rises with or wihout the -static option.  Something weird is going
+on in the Ubuntu 16.04, gcc linker.
    
    73
    W9DKI
